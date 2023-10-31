@@ -1,21 +1,26 @@
+const db = require('./db');
 
-const db = require("mssql");
+async function fazerLogin(login, senha){
 
-function conectarMsSQL(){}
+    try {
+            console.log('login');
+            let consulta = `select * from usuarios u where u.login = '${login}' and u.senha = '${senha}'`
+        
+            const con = db.conectarMysql();
+            let resultado = await con.query( consulta );
 
-function conectar(){
-    db.createConnection({
-        host: 'localhost',
-        user: 'root',
-        password: '1234'
-    })
-
+            let usuario = resultado[0][0]
+            console.log( usuario )
+            con.destroy();
+        
+            if(login == usuario.login && senha == usuario.senha){
+                return true;
+            }else{
+                return false;
+            }
+    } catch (error) {
+        return false;
+    }
 }
 
-function fazerLogin(login, senha){
-        if(login =='admin' && senha == '1234'){
-            return true;
-        }
-        return false;
-   }
 module.exports = { fazerLogin }
