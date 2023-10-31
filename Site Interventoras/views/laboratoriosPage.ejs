@@ -36,7 +36,65 @@
     <!-- End Navbar -->
     <div class="container-fluid py-4">
 
-      <h1> Em construção</h1>
+      <div class="row">
+        <div class="col-12">
+
+          <div class="card">
+            <form action="createLab" method="post">
+
+              
+              <div class="card-header">Laboratorios</div>
+              <div class="card-body">
+                
+                <div class="col-12">
+
+                  <% if(locals.msg ){ %>
+                    <h3>Inserido com Sucesso</h3>
+                  <% } %>
+                  
+                  
+                  <div class="input-group input-group-outline my-3">
+                    <label class="form-label">Nome</label>
+                    <input type="text" class="form-control" name="nome">
+                  </div>
+                </div>
+                
+                <div class="row">
+                  
+                  
+                  <div class="col-6">
+                    
+                    <div class="input-group input-group-outline my-3">
+                      <label class="form-label">Capacidade</label>
+                      <input type="number" class="form-control" name="capacidade">
+                    </div>
+                    
+                  </div>
+                  
+                  <div class="col-6">
+                  
+                    <div class="input-group input-group-outline my-3">
+                      <label class="form-label">Computadores</label>
+                      <input type="number" class="form-control" name="computadores">
+                    </div>
+                    
+                  </div>
+                  
+                </div>
+                
+                <div class="row">
+                  <div class="col-12">
+                    <button type="submit" class="btn btn-lg bg-gradient-primary">Salvar</button>
+                  </div>
+                </div>
+              </div>
+              
+            </form>
+          </div>
+            
+            
+          </div>
+      </div>  
     </div>
 
     <%- include('./layout/footer') %>
