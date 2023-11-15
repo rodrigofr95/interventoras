@@ -8,9 +8,31 @@ router.get('/', function(req, res, next) {
   res.render('sign-in', { });
 });
 
-router.get('/laboratorios', function(req, res, next) {
-  res.render('laboratoriosPage', { });
+router.get('/laboratorios', async function(req, res, next) {
+
+ // CONSULTAR OS LABORATÓRIOS
+  let listaLabs = await labRepository.consultarLab();
+  console.log(listaLabs);
+
+  res.render('laboratoriosList', { laboratorios: listaLabs });
 });
+
+router.get('/addlaboratorio', (req, res, next)=>{
+  res.render('laboratoriosPage',{});
+});
+
+router.get('/deletelab', async (req, res, next)=>{
+
+  const id = req.query.id;
+  console.log(id);
+
+  await labRepository.apagarLab(id);
+  let listaLabs = await labRepository.consultarLab();
+ 
+  res.render('laboratoriosList', { laboratorios: listaLabs });
+});
+
+
 
 router.post('/createLab', function(req, res, next) {
 
@@ -23,6 +45,44 @@ router.post('/createLab', function(req, res, next) {
   }
 
 });
+
+
+
+router.get('/viewLab', async function(req, res, next) {
+
+  let {id} = req.query;
+
+  const lab = await labRepository.getLab(id)
+  console.log(lab)
+    res.render('laboratoriosDetail', { laboratorio: lab });
+  
+
+});
+
+router.get('/updateLab', async function(req, res, next) {
+
+  let {id} = req.query;
+
+  const lab = await labRepository.getLab(id)
+  console.log(lab)
+    res.render('laboratoriosUpdate', { laboratorio: lab });
+  
+
+});
+
+
+router.post('/updateLab', async function(req, res, next) {
+
+  let {id, nome, capacidade, computadores} = req.body;
+
+  await labRepository.updateLab(id, nome, capacidade, computadores)
+  
+  let listaLabs = await labRepository.consultarLab();
+  res.render('laboratoriosList', { laboratorios: listaLabs });
+  
+
+});
+
 
 router.post('/autenticar', async function(req, res, next) {
   let { login, senha } = req.body; 
