@@ -40,7 +40,9 @@
         <div class="col-12">
 
           <div class="card">
-            <form action="createLab" method="post">
+            <form action="updateLab" method="post">
+
+              <input type="hidden" name="id" value="<%= laboratorio.id %>" >
 
               
               <div class="card-header">Laboratorios</div>
@@ -48,14 +50,14 @@
                 
                 <div class="col-12">
 
-                  <% if(locals.msg ){ %>
-                    <h3>Inserido com Sucesso</h3>
-                  <% } %>
+                  
                   
                   
                   <div class="input-group input-group-outline my-3">
-                    <label class="form-label">Nome</label>
-                    <input type="text" class="form-control" name="nome">
+                    
+                    <input type="text" class="form-control" name="nome" 
+                    value="<%= laboratorio.nome %>" >
+
                   </div>
                 </div>
                 
@@ -65,8 +67,9 @@
                   <div class="col-6">
                     
                     <div class="input-group input-group-outline my-3">
-                      <label class="form-label">Capacidade</label>
-                      <input type="number" class="form-control" name="capacidade">
+                      
+                      <input type="number" class="form-control" name="capacidade"
+                      value="<%= laboratorio.capacidade %>" >
                     </div>
                     
                   </div>
@@ -74,8 +77,9 @@
                   <div class="col-6">
                   
                     <div class="input-group input-group-outline my-3">
-                      <label class="form-label">Computadores</label>
-                      <input type="number" class="form-control" name="computadores">
+                      
+                      <input type="number" class="form-control" name="computadores"
+                      value="<%= laboratorio.computadores %>" >
                     </div>
                     
                   </div>
@@ -86,7 +90,7 @@
                   <div class="col-12">
                     <button type="button" onclick="window.location = '/laboratorios'" class="btn btn-lg bg-gray-200">Voltar</button>
                     <button type="submit" class="btn btn-lg bg-gradient-primary">Salvar</button>
-                  </div>
+                   </div>
                 </div>
               </div>
               
