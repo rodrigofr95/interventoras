@@ -2,7 +2,7 @@
 const db = require("mysql2");
 
 function conectarMsSQL(){
-    const connStr = "Server=localhost;Database=aster;User Id=sa;Password=asdasdf;";
+    const connStr = "Server=localhost;Database=aster;User Id=sa;Password=1234;";
     const sql = require("mssql");
 
     const con = sql.connect(connStr)
