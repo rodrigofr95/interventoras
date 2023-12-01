@@ -6,7 +6,7 @@ O Interventoras é uma plataforma de denúncia de violência contra mulheres. Ne
 - Beatriz Luiza Figueiredo de Souza
 - Lidyanne Emmanuelle Vieira da Silva
 - Thaís Aoki Girão
-
+- Walkiria
 
 
 ### Link do Protótipo:
